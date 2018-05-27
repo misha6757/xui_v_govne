@@ -3,6 +3,7 @@
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
+
     <h1>Заполните форму</h1>
     <div class="order-info">
         <h3>Ваш заказ</h3>
@@ -16,9 +17,12 @@
         </ul>
         <p>Всего: {{ cart.get_total_price }}RUB</p>
     </div>
-    <form action="." method="post" class="order-form">
+	 
+    <form action="." method="post" class="pol">
         {{ form.as_p }}
         <p><input type="submit" value="Отправить"></p>
         {% csrf_token %}
     </form>
+	
+
 {% endblock %}

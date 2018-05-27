@@ -5,11 +5,11 @@
 {% endblock %}
 {% block content %}
     <div class="product-detail">
-		 <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="300" height="500" 
+		 <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
+        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" 
   alt="Иллюстрация" align="left"vspace="5" hspace="5">
 		
-		
+		<div id="blok">
 		<H3>{{ product.autor }}</H3>
         <h1>{{ product.name }}</h1>
 		
@@ -17,8 +17,8 @@
        
 		
 		<p>{{ product.description}}
-		<p>цена</p>
-        <p class="price">{{ product.price }}RUB</p>
+		<p class="price">Цена {{ product.price }}RUB</p>
+		</div>
 <form action="{% url "cart:cart_add" product.id %}" method="post">
     {{ cart_product_form }}
     {% csrf_token %}

@@ -2,6 +2,9 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -12,18 +15,19 @@
 </head>
 <body>
 <div id="header">
-<center>
-    <a href="/" class="logo">My shop</a>
-</center>
+    <center><a href="/" class="logo">My shop</a></center>
+</div>
+ 
 </div>
 
 <div id="subheader">
+
     <div class="cart">
     {% with total_items=cart|length %}
         {% if cart|length > 0 %}
             Ваша корзина:
             <a href="{% url "cart:cart_detail" %}">
-                {{ total_items }} книга{{ total_items|pluralize }},
+                Количество товаров {{ total_items }}  ,
                 {{ cart.get_total_price }}RUB
             </a>
         {% else %}
@@ -32,13 +36,34 @@
     {% endwith %}
 	</div>
 </div>
+<div id="slider-wrap">
+	<div id="slider">
+		<div class="slide"><img src="{% static 'img/Antique-Book-1280x720.jpg' %}" width="1920" height="500"></div>
+		<div class="slide"><img src="{% static 'img/kartinkijane.ru-16128.jpg' %}" width="1920" height="500"></div>
+		<div class="slide"><img src="{% static 'img/tomswallpapers.com-70317.jpg' %}" width="1920" height="500"></div>
+	</div>
+
+</div>
 <div id="content">
     {% block content %}
     {% endblock %}
 </div>
-<div id="footer">
-	<h2>footer (низ сайта)</h2>
-	</div>
+<<footer id="myFooter">
+        <div class="container">
+            <ul>
+                <li><a href="#">Company Information</a></li>
+                
+            </ul>
+        <p class="footer-copyright">© 2018 Книжный мир</p>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=100005121481564" class="social-icons"><i class="fa fa-facebook"></i></a>
+            
+        </div>
+    </footer>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
